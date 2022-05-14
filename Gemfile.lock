@@ -68,6 +68,10 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    after_commit_everywhere (1.2.0)
+      activerecord (>= 4.2)
+      activesupport
+    bcrypt (3.1.17)
     bindex (0.8.1)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
@@ -135,6 +139,7 @@ GEM
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
+    pwned (2.4.0)
     racc (1.6.0)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -171,11 +176,34 @@ GEM
     reline (0.3.1)
       io-console (~> 0.5)
     rexml (3.2.5)
+    roda (3.56.0)
+      rack
+    rodauth (2.23.0)
+      roda (>= 2.6.0)
+      sequel (>= 4)
+    rodauth-model (0.2.0)
+      rodauth (~> 2.0)
+    rodauth-pwned (0.1.0)
+      pwned (~> 2.1)
+      rodauth (~> 2.0)
+    rodauth-rails (1.4.1)
+      bcrypt
+      railties (>= 4.2, < 8)
+      roda (~> 3.55)
+      rodauth (~> 2.23)
+      rodauth-model (~> 0.1)
+      sequel-activerecord_connection (~> 1.1)
+      tilt
     rubyzip (2.3.2)
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    sequel (5.56.0)
+    sequel-activerecord_connection (1.2.9)
+      activerecord (>= 4.2, < 8)
+      after_commit_everywhere (~> 1.1)
+      sequel (~> 5.38)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -190,6 +218,7 @@ GEM
       railties (>= 6.0.0)
     strscan (3.0.3)
     thor (1.2.1)
+    tilt (2.0.10)
     timeout (0.2.0)
     turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
@@ -226,6 +255,8 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.3)
   redis (~> 4.0)
+  rodauth-pwned
+  rodauth-rails
   selenium-webdriver
   simple_form
   sprockets-rails

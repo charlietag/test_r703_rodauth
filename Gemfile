@@ -78,3 +78,6 @@ end
 
 
 gem 'simple_form'
+
+gem 'rodauth-rails'
+gem 'rodauth-pwned'
