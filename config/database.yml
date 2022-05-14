@@ -13,8 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
+  username: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db, :user) %>
+  password: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db, :pass) %>
   socket: /var/lib/mysql/mysql.sock
 
 development:
@@ -51,5 +51,3 @@ test:
 production:
   <<: *default
   database: test_r703_rodauth_production
-  username: test_r703_rodauth
-  password: <%= ENV["TEST_R703_RODAUTH_DATABASE_PASSWORD"] %>
