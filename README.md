@@ -1,24 +1,21 @@
-# README
+# try gem rodauth-rails
+## enable module
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+# app/misc/rodauth_main.rb
+enable :audit_logging
+audit_log_message_for :login_failure do
+  "Login failure on domain #{request.host}"
+end
+audit_log_metadata_for :login_failure do
+  {'ip'=>request.ip}
+end
+```
 
-Things you may want to cover:
+```
+rails g rodauth:migration audit_logging
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rails g rodauth:views --all
+```

@@ -10,6 +10,14 @@ class RodauthMain < Rodauth::Rails::Auth
     # enable :password_complexity
     enable :pwned_password
 
+    enable :audit_logging
+    audit_log_message_for :login_failure do
+      "Login failure on domain #{request.host}"
+    end
+    audit_log_metadata_for :login_failure do
+      {'ip'=>request.ip}
+    end
+
     # See the Rodauth documentation for the list of available config options:
     # http://rodauth.jeremyevans.net/documentation.html
 
